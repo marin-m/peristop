@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Peristop &bull; the most popular Persicopes{% endblock %}
+{% block content %}
+        <div id="durations">
+            <div class="pagename">The most popular</div>
+            This last:<br>
+            {% for idur, idurname in [('month', 'Month'), ('week', 'Week'), ('day', '24 h')] %}
+                {% if idur != duration %}<a href="/top/{{ idur }}/1{% if unfilter %}/yes{% endif %}" target="_self">{{ idurname }}</a>
+                {% else %}<b>{{ idurname }}</b>{% endif %}
+                {% if not loop.last %}&bull;{% endif %}
+            {% endfor %}
+            <div style="margin-top: 5px; font-size: 18px">
+                {% if unfilter %}
+                <b>Show</b> &bull; <a href="/top/{{ duration }}/{{ page }}" target="_self">hide</a>
+                {% else %}
+                <a href="/top/{{ duration }}/{{ page }}/yes" target="_self">Show</a> &bull; <b>hide</b>
+                {% endif %}
+                explicit content
+            </div>
+        </div>
+        {% if page > 1 %}
+        <div class="pagination pagination_top">
+            <a href="/top/{{ duration }}/{{ page - 1 }}{% if unfilter %}/yes{% endif %}" target="_self">🡨&nbsp; Back</a>
+        </div>
+        {% endif %}
+        <table class="table">
+            <tr>
+                <th>Views</th>
+                <th>Name</th>
+            </tr>
+        {% for peri in peris[:30] %}
+            <tr{% if peri.running %} class="running"{% endif %}>
+                <td>{{ peri.viewers }}</td>
+                <td class="tbltitle">
+                    <img src="{{ peri.thumb }}" style="float: left; margin-right: 10px">
+                    <a href="{{ peri.url }}">
+                    {% if peri.title %}
+                    {{ peri.title }} <span class="tbluser">(@{{ peri.user }})</span>
+                    {% else %}
+                    @{{ peri.user }}
+                    {% endif %}
+                    <br>
+                    <span class="tblsubtitle">
+                    <i>{% if peri.city or peri.flag %}{{ peri.city }}{% if peri.flag %} <img src="{{ peri.flag }}" class="flag">{% endif %} &bull; {% endif %}<span class="tbldate">{{ peri.startdate }}</span></i>
+                    </span>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        {% if peris[30:] %}
+        <div class="pagination">
+            <a href="/top/{{ duration }}/{{ page + 1 }}{% if unfilter %}/yes{% endif %}" target="_self">More &nbsp;🡪</a>
+        </div>
+        {% endif %}
+{% endblock %}

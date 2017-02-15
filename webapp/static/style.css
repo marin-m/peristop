@@ -1,0 +1,163 @@
+body {
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background: #ddd; /* #ddd */
+    font-size: 48px;
+    font-family: 'Roboto Condensed', sans-serif;
+    padding: 20px;
+    margin-bottom: 40px;
+    /*box-shadow: 0 0 20px #888;*/
+    
+    display: none !important;
+}
+header a {
+    text-decoration: none;
+    padding: 20px;
+    display: inline-block;
+    color: black;
+}
+main {
+    margin: 15px;
+}
+.pagename {
+    font-size: 28px;
+    font-weight: bold;
+    /*font-family: 'Roboto Condensed', sans-serif;*/
+    margin-bottom: 10px;
+}
+#durations {
+    font-size: 24px;
+    line-height: 1.3em;
+    margin-bottom: 30px;
+}
+.pagination {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 20px 40px;
+    /*font-family: 'Roboto Condensed', sans-serif;*/
+}
+.pagination a {
+    display: inline-block;
+    padding: 10px;
+}
+.pagination_top {
+    margin-left: 0;
+    margin-top: -5px;
+}
+.pagination_top a {
+    padding-top: 0;
+    padding-left: 3px;
+}
+a {
+    color: #0046A6; /* #0046A6 #003783 #003E95 */
+}
+a:hover {
+    opacity: 0.8;
+}
+footer {
+    margin: 60px 0;
+    font-size: 18px;
+    text-align: center;
+}
+table {
+    border-collapse: collapse;
+    font-size: 18px;
+}
+th, td {
+    border: 1px solid #d1d1d1;
+    color: #666;
+    padding: 5px;
+}
+td a {
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+/*td a:hover {
+    opacity: 0.8;
+}*/
+.tbluser {
+    color: #aaa;
+}
+.running td {
+    background: #f1f1f1;
+}
+.tbltitle {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 22px;
+    padding: 10px;
+    min-width: 710px;
+}
+.tblsubtitle {
+    font-size: 18px;
+    color: #666;
+    margin-top: 5px;
+    display: block;
+}
+.tbldate {
+}
+.flag {
+    margin-bottom: -5px;
+    margin-left: 1px;
+}
+.blk {
+    background: #eee;
+    margin-top: 15px;
+}
+.descrname {
+    
+}
+.chat {
+    height: 200px;
+    position: relative;
+    overflow-y: auto;
+}
+.chat a {
+    font-weight: bold;
+    text-decoration: none;
+    color: inherit;
+}
+#viewmap {
+    height: 230px;
+}
+#viewers {
+    padding: 5px;
+    line-height: 1.2em;
+    font-size: 12px;
+}
+
+#onvideo {
+    position: relative;
+    width: 320px;
+    height: 568px;
+}
+
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.vid90, .vid_90 {
+    width: 568px !important;
+    height: 320px !important;
+}
+.vid90 video, .vid_90 video {
+    left: 124px;
+    top: -124px;
+}
+
+.vid90 video {
+    transform: rotate(90deg);
+}
+.vid_90 video {
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+.vid180 video {
+    transform: rotate(180deg);
+}

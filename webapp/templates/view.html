@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}{{ peri.title }} &bull; Peristop{% endblock %}
+{% block content %}
+    <div id="onvideo">
+        <video src="/{{ bcst }}.mp4" controls autoplay></video>
+    </div>
+    
+    {% if chat %}
+    <div class="chat blk"><div style="height:100%"></div>{{ chat|safe }}</div>
+    {% endif %}
+
+    <div class="tbltitle blk">
+        <div>{{ peri.title }}</div>
+        <span class="descrname">
+        <a href="https://www.periscope.tv/{{ peri.username }}">
+        {% if peri.profimg %}
+        <img src="{{ peri.profimg }}" width="48">
+        {% endif %}
+        {% if peri.displayname %}
+        {{ peri.displayname }} (@{{ peri.username }})
+        {%- else %}
+        @{{ peri.username }}
+        {% endif %}</a>
+        {% if peri.tweetname %}
+        <a href="https://twitter.com/{{ peri.tweetname }}" style="color: steelblue; font-family: serif">[t]</a>
+        {% endif %}
+        </span>
+        <br>
+        <span class="tblsubtitle">
+        <i>{% if peri.city or peri.flag %}{{ peri.city }}{% if peri.flag %} <img src="{{ peri.flag }}" class="flag">{% endif %} &bull; {% endif %}<span class="tbldate">{{ peri.startdate }}</span></i>
+        </span>
+    </div>
+    
+    {% if peri.lat %}
+    <div class="blk" id="viewmap"></div>
+    {% endif %}
+    
+    {% if chat %}
+    <div class="blk" id="viewers">Have seen the broadcast:
+    {% if peri.viewers %}
+    {% for viewer in peri.viewers %}
+    <a href="https://www.periscope.tv/{{ viewer.user }}">{{ viewer.display }}</a>
+    {%- if viewer.hearts %} ({{ viewer.hearts }}❤️){% endif -%}
+    {%- if not loop.last %},{% endif %}
+    {% endfor %}
+    {% endif %}
+    </div>
+    {% endif %}
+    
+{% endblock %}
+
+{% block incl %}
+    {% if peri.lat %}
+    <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <script src="//cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script>var lat = {{ peri.lat }}; var lng = {{ peri.lng }}</script>
+    {% endif %}
+    <script>var timestamps = {{ peri.timestamps }}; var orientations = {{ peri.orientations }}</script>
+    <script src="/chat-{{ chatts }}.js"></script>
+{% endblock %}

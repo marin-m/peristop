@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+
+*.mp4
+*.json
+*.jpg
+
+crawler/migrate
+crawler/tests
+config.py
